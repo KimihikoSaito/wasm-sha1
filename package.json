@@ -1,0 +1,11 @@
+{
+    "main": "sha1.js",
+    "scripts": {
+        "build": "npm run build:js && npm run build:wasm",
+        "build:js": "tsc --module commonjs --target esnext webassembly.d.ts sha1.ts",
+        "build:wasm": "bash build.sh"
+    },
+    "devDependencies": {
+        "typescript": "^3.4.3"
+    }
+}
