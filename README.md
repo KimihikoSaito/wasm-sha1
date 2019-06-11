@@ -8,7 +8,6 @@ Each data-accepting function (`sum()`, `Summer.push()`) accepts the following in
 
 -   string
 -   BufferSource
--   ReadableStream<Uint8Array>
 
 ### sum
 
@@ -27,17 +26,16 @@ summer.digest(); // or summer.digest("hex");
 
 ## Importing
 
-Load `sha.wasm` following the intructions of https://developer.mozilla.org/en-US/docs/WebAssembly/Loading_and_running and pass the resulting module to the default export.
+Load `sha1.wasm` following the intructions of https://developer.mozilla.org/en-US/docs/WebAssembly/Loading_and_running and pass the resulting module to the default export.
 
 ```
-const fs = require('fs');
-const { default } = require('./sha1');
+import sha1 from 'wasm-sha1'; // or const { default: sha1 } = require('wasm-sha1');
 
 ...
 
 const wasm = fs.readFileSync('sha1.wasm');
 const module = await WebAssembly.compile(wasm);
-const { sum, Summer } = default(module);
+const { sum, Summer } = sha1(module);
 ```
 
 or with web APIs
@@ -48,6 +46,10 @@ const module = await WebAssembly.compileStreaming(fetch('sha1.wasm'));
 
 ## Building
 
-https://github.com/cloudflare/cloudflare-workers-wasm-demo#how-to-build
+Install [emscripten](https://emscripten.org/docs/getting_started/downloads.html)
 
-Then run `npm run build`
+Then run `npm run build:wasm`
+
+## Debugging the wasm
+
+https://github.com/WebAssembly/wabt

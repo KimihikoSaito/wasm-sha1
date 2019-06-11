@@ -1,11 +1,16 @@
 {
-    "main": "sha1.js",
+    "name": "wasm-sha1",
+    "main": "dist/index.js",
     "scripts": {
         "build": "npm run build:js && npm run build:wasm",
-        "build:js": "tsc --module commonjs --target esnext webassembly.d.ts sha1.ts",
-        "build:wasm": "bash build.sh"
+        "build:js": "tsc --module commonjs --target esnext --outDir dist index.ts",
+        "build:wasm": "bash wasm/build.sh",
+        "wasm2wat": "wasm2wat wasm/sha1.wasm -o wasm/sha1.wat"
+    },
+    "dependencies": {
+        "wasm-common": "github:ssttevee/wasm-common#9e0aa19"
     },
     "devDependencies": {
-        "typescript": "^3.4.3"
+        "typescript": "^3.5.1"
     }
 }
