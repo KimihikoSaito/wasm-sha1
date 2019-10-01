@@ -1,5 +1,6 @@
 {
     "name": "wasm-sha1",
+    "version": "1.0.0",
     "main": "dist/index.js",
     "scripts": {
         "build": "npm run build:js && npm run build:wasm",
