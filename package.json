@@ -9,7 +9,7 @@
         "wasm2wat": "wasm2wat wasm/sha1.wasm -o wasm/sha1.wat"
     },
     "dependencies": {
-        "wasm-common": "github:ssttevee/wasm-common#9e0aa19"
+        "wasm-common": "github:ssttevee/wasm-common#514c7b6"
     },
     "devDependencies": {
         "typescript": "^3.5.1"
