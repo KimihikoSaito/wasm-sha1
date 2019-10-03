@@ -1,7 +1,7 @@
 import Memory from 'wasm-common/memory';
 
-export default function(Sha1Wasm: WebAssembly.Module) {
-    const mem = new Memory({ initial: 2 });
+export default function(Sha1Wasm: WebAssembly.Module, { grow = 0 }: { grow: number } = {}) {
+    const mem = new Memory({ initial: 256, maximum: 256 + grow });
     
     const instance = new WebAssembly.Instance(Sha1Wasm, {
         module: {},
