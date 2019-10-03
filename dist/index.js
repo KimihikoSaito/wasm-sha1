@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const memory_1 = require("wasm-common/memory");
-function default_1(Sha1Wasm) {
-    const mem = new memory_1.default({ initial: 2 });
+function default_1(Sha1Wasm, { grow = 0 } = {}) {
+    const mem = new memory_1.default({ initial: 256, maximum: 256 + grow });
     const instance = new WebAssembly.Instance(Sha1Wasm, {
         module: {},
         env: {
